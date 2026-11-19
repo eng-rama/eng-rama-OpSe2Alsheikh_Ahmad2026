@@ -36,15 +36,10 @@ public class SportvereinControl {
 		  
     public void leseAusDatei(String typ){
     	try {
-      		if("csv".equals(typ)){
+      		
       			sportvereinModel.leseAusDatei(typ);
       			sportvereinView.zeigeInformationsfensterAn(
       	  	   			"Der Sportverein wurde gelesen!");
-      		}
-       		else{
-       			sportvereinView.zeigeInformationsfensterAn(
-	   				"Noch nicht implementiert!");
-	   		}
 		}
 		catch(Exception exc){
 			sportvereinView.zeigeFehlermeldungsfensterAn(

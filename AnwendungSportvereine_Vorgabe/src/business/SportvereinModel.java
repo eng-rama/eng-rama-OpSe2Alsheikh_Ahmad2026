@@ -1,10 +1,13 @@
 package business;
 
-import java.io.BufferedReader;
+
 import java.io.BufferedWriter;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import fileCreatorsAlsheikhAhmad.ConcreteCreatorAB;
+import fileCreatorsAlsheikhAhmad.ReaderCreatorAlsheikhAhmad;
+import fileCreatorsAlsheikhAhmad.ReaderProductAlsheikhAhmad;
 
 public class SportvereinModel {
 	// speichert temporaer ein Objekt vom Typ Sportverein
@@ -19,16 +22,16 @@ public class SportvereinModel {
 	}
     
 	public void leseAusDatei(String typ) throws IOException{
-      		if("csv".equals(typ)){
-      			BufferedReader ein = new BufferedReader(new FileReader("Sportverein.csv"));
-      			String[] zeile = ein.readLine().split(";");
+      		ReaderCreatorAlsheikhAhmad creator = new ConcreteCreatorAB();
+      		ReaderProductAlsheikhAhmad product = creator.factoryMethod(typ);
+      		String[] zeile = product.leseAusDatei();
       			this.sportverein = new Sportverein(zeile[0], 
       				zeile[1], 
       				Integer.parseInt(zeile[2]), 
       				Integer.parseInt(zeile[3]), 
       				zeile[4].split("_"));
-      				ein.close();
-		}
+      				product.schliesseDatei();
+		
 	}
 		
 	public void schreibeSportvereineInCsvDatei() throws IOException{
