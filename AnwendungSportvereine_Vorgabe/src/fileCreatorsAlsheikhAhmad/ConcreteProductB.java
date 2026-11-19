@@ -13,15 +13,11 @@ public class ConcreteProductB extends ReaderProductAlsheikhAhmad {
 
 	@Override
 	public String[] leseAusDatei() throws IOException {
-		String[] ergebnisZeile = new String[5];
-		String zeile = ein.readLine();
-		int i = 0;
-		while (i < ergebnisZeile.length) {
-			ergebnisZeile[i] = zeile;
-			zeile = ein.readLine();
-			i++;
+		String a[] = new String [5];
+		for (int i = 0; i < a.length; i++) {
+			a[i] = ein.readLine();
 		}
-		return ergebnisZeile;
+		return a;
 	}
 
 	@Override
